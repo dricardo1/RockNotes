@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>RockNotes</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+        <!-- endbuild -->
+        <!-- build:js scripts/vendor/modernizr.js -->
+        <script src="bower_components/modernizr/modernizr.js"></script>
+        <!-- endbuild -->
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+          <div class="container">
+            <div id="menu" class="menu cf"></div>
+            <h1>Add a new RockNote</h1>
+            <div id="content"></div>
+        </div>
+
+        <!-- Templates -->
+
+        <script type="text/template" id="tpl-menu">
+            <ul>
+                <li><a href="#">List</a></li>
+                <li><a href="#archive">Archive</a></li>
+                <li class="right"><a href="#new">+</a></li>
+            </ul>
+        </script>
+        <script type="text/template" id="tpl-list-item">
+            <li class="cf done-<%= done %>" data-index="<%= index %>">
+                <h2>
+                    <input type="checkbox" data-status <%= doneChecked %> />
+                    <a href="javascript:void(0);" data-up>&#8593;</a>
+                    <a href="javascript:void(0);" data-down>&#8595;</a>
+                    <%= title %>
+                </h2>
+                <div class="options">
+                    <a href="#edit/<%= index %>">edit</a>
+                    <a href="javascript:void(0);" data-archive><%= archiveLink %></a>
+                    <a href="#delete/<%= index %>">delete</a>
+                </div>
+            </li>
+        </script>
+        <script type="text/template" id="tpl-form">
+            <form>
+                <textarea><%= title %></textarea>
+                <button>save</button>
+            </form>
+        </script>
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+
+        <!-- build:js scripts/vendor.js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/backbone/backbone.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/main.js -->
+        <script src="scripts/main.js"></script>
+        <script src="scripts/templates.js"></script>
+         <script src="scripts/App.js"></script>
+        <script src="scripts/views/menu.js"></script>
+        <script src="scripts/views/list.js"></script>
+        <script src="scripts/views/form.js"></script>
+        <script src="scripts/models/ToDo.js"></script>
+        <script src="scripts/collections/ToDos.js"></script>
+        <script>
+            window.onload = function() {
+                app.init();
+            }
+        </script>
+        <!-- endbuild -->
+</body>
+</html>
